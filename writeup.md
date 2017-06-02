@@ -45,16 +45,19 @@ Gaussian blur is applied on the grayscaled image to remove noise and spurious gr
 **3. Canny transform**
 
 [Canny edge detection](http://docs.opencv.org/trunk/da/d22/tutorial_py_canny.html) is applied to the Gaussian-blurred image. This allows us to detect edges on the basis of change in the gradient intensity and direction at every pixel. The algorithm will first detect strong edge (strong gradient) pixels above the high\_threshold, and reject pixels below the low\_threshold. Next, pixels with values between the low\_threshold and high\_threshold will be included as long as they are connected to strong edges. The output edges is a binary image with white pixels tracing out the detected edges and black everywhere else. I used a low\_threshold value of 50 and a high\_threshold value of 150.
+
 ![alt text][image4]
 
 **4. Region of interest mask**
 
 A mask is drawn to select only the relevant region in which there is a possibility of lane lines being present. This would be generally a quadrilateral shaped region in the bottom half of the image. The mask selects the white colors (edges) from the image obtained after applying Canny transformation using a bitwise and operation.
+
 ![alt text][image5]
 
 **5. Hough transform**
 
 [Hough transform](https://alyssaq.github.io/2014/understanding-hough-transform/) is applied on the the image obtained after applying the region of interest mask. The probabilisitc Hough transform is used to construct line segments using the edge points detected in the previous step. More information about using Hough transform can be found [here](http://docs.opencv.org/3.0-beta/doc/py_tutorials/py_imgproc/py_houghlines/py_houghlines.html). The edges are segments colored in red. The coordinates of the end points of the line segments are returned by the Hough transform function. 
+
 ![alt text][image6]
 
 **6. Drawing lane lines**
