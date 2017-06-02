@@ -11,7 +11,7 @@ The goals / steps of this project are the following:
 
 [//]: # (Image References)
 
-[image1]: ./examples/writeup_images/solidWhiteRight.jpg "Original image"
+[image1]: ./examples/writeup_images/original_image.jpg "Original image"
 [image2]: ./examples/writeup_images/grayscale.jpg "Grayscale"
 [image3]: ./examples/writeup_images/Gaussian_blur.jpg "Gaussian blur"
 [image4]: ./examples/writeup_images/Canny_edges.jpg "Canny edges"
@@ -27,16 +27,19 @@ The goals / steps of this project are the following:
 ### 1. Description of the pipeline
 
 My pipeline consisted of 5 steps. For illustration I have used an example image shown below to show the effect of all the operations in my pipeline.
+
 ![alt text][image1]
 
 **1. Color to grayscale conversion**
 
 The color image was converted to grayscale to make the computation easier and to detect lane lines of any color.
+
 ![alt text][image2]
 
 **2. Gaussian blur**
 
 Gaussian blur is applied on the grayscaled image to remove noise and spurious gradients. Gradients are calulated by the change in the intensity of gray value between adjacent pixels. More information about OpenCV's Gaussian blur can be found [here](http://docs.opencv.org/2.4/modules/imgproc/doc/filtering.html?highlight=gaussianblur#gaussianblur). I used a kernel size of 3 for Gaussian blur since the Canny edge detector (described next) already includes Gaussian smoothing.
+
 ![alt text][image3]
 
 **3. Canny transform**
